@@ -83,7 +83,7 @@ def drawAnim(path):
                 #Odd Columns count up & Even count down
                 if (columnNum % 2) == 0:
                     pixelTarget += 7
-                               
+
                 else:
                     pixelTarget -= 7   
         strip.show()           
