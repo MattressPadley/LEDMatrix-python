@@ -80,6 +80,7 @@ def drawAnim(path):
                 frame.append(px)
         anim.append(frame)
 
+<<<<<<< HEAD
     for frame in anim:
    
       mappedFrame = pixelMap(7, 7, frame)
@@ -87,6 +88,19 @@ def drawAnim(path):
       for i in mappedFrame:
          strip.setPixelColor(i, Color(r, g, b))
 
+=======
+    for frame in animRGB:
+    	
+    	mappedFrame = pixelMap(7, 7, frame)
+    	
+    	for i in mappedFrame
+    		r = mappedFrame[i][0]
+    		b - mappedFrame[i][1]
+    		g = mappedFrame[i][2]
+    		
+    		strip.setPixelColor(i, Color(r, g, b))
+      	
+>>>>>>> 8ed78d4966d87d4ddc6432c61e277325e5cc7d25
       strip.show()
       time.sleep(.10)
 
