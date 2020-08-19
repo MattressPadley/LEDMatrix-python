@@ -93,4 +93,6 @@ def chase(speed, width, delta):
 	
 	for i in range(strip.numPixels()):
 		
+		
+drawAnim('anim1')
 	
