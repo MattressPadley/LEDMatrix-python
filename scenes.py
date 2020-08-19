@@ -1,4 +1,5 @@
 import os
+import time
 from PIL import Image
 from rpi_ws281x import Color, PixelStrip, ws
 
@@ -24,12 +25,18 @@ def pixelMap(width, height, frame):
 
    pixelTarget = 0
    columnNum = 0
-   mappedFrame = []
+   mappedFrame = frame
 
-   for i in range(1, frame):
+   #for i in range(len(frame)):
+   for i in range(strip.numPixels()):
+
+      print(str(i) + ">" + str(pixelTarget))
+      mappedFrame[i] = frame[pixelTarget]
+      #print((columnNum % 2) == 0)
+      #print(pixelTarget == (columnNum + ((LED_COUNT - 1) - (width - 1))))
 
       #if PixTarget is too high go to the next row
-      if pixelTarget == (columnNum + (LED_COUNT - (width - 1)) and (columnNum % 2) == 0):
+      if pixelTarget == (columnNum + ((LED_COUNT - 1) - (width - 1))) and (columnNum % 2) == 0:
          columnNum += 1
          pixelTarget += 1
 
@@ -38,15 +45,12 @@ def pixelMap(width, height, frame):
          pixelTarget += 1
 
       else:
-
          #Odd Columns count up & Even count down
          if (columnNum % 2) == 0:
             pixelTarget += width
-
          else:
             pixelTarget -= width
 
-         mappedFrame[pixelTarget] = frame[i]
 
    return mappedFrame
 
@@ -60,9 +64,7 @@ def fillAll(r, g, b):
 # Draw the animation at givien path
 def drawAnim(path):
 
-    frameNum = 0
     anim = []
-    LEDnum = 1
     files = os.listdir('/home/pi/anim/' + path)
 
     for file in sorted(files):
@@ -72,7 +74,6 @@ def drawAnim(path):
         imgHeight = img.size[1]
         frame = []
 
-
         for i in range(0, imgHeight):
             for j in range(0, imgWidth):
                 xy = (j, i)
@@ -80,35 +81,26 @@ def drawAnim(path):
                 frame.append(px)
         anim.append(frame)
 
-<<<<<<< HEAD
     for frame in anim:
-   
+       
       mappedFrame = pixelMap(7, 7, frame)
+   
+      #for i in range(len(mappedFrame)):
+      for i in range(strip.numPixels()):
+         r = mappedFrame[i][0]
+         b = mappedFrame[i][2]
+         g = mappedFrame[i][1]
 
-      for i in mappedFrame:
          strip.setPixelColor(i, Color(r, g, b))
-
-=======
-    for frame in animRGB:
-    	
-    	mappedFrame = pixelMap(7, 7, frame)
-    	
-    	for i in mappedFrame
-    		r = mappedFrame[i][0]
-    		b - mappedFrame[i][1]
-    		g = mappedFrame[i][2]
-    		
-    		strip.setPixelColor(i, Color(r, g, b))
-      	
->>>>>>> 8ed78d4966d87d4ddc6432c61e277325e5cc7d25
+      
       strip.show()
       time.sleep(.10)
 
 """
 def chase(speed, width, delta):
-	
-	for i in range(strip.numPixels()):
+   
+   for i in range(strip.numPixels()):
 """		
-		
+fillAll(255, 0, 0)		
 drawAnim('anim1')
-	
+   
