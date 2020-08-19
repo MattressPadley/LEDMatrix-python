@@ -67,8 +67,7 @@ def drawAnim(path):
             b = frame[pixelTarget][2]
 
             strip.setPixelColor(i, Color(r, g, b))
-            
-            
+
             #print(str(i) + ' | ' + str(pixelTarget) + ' | ' + str(r) + str(g) + str(b))
                 
             #if PixTarget is too high go to the next row
@@ -88,7 +87,7 @@ def drawAnim(path):
                 else:
                     pixelTarget -= 7   
         strip.show()           
-           
+
 host = ""
 port = 14000
 buf = 1024
@@ -117,7 +116,7 @@ while True:
         fillMatrix(int(rgb[0]), int(rgb[1]), int(rgb[2]))
         print(rgb[0], rgb[1], rgb[2])
 
-    
+
 
 UDPSock.close()
 os._exit(0)
