@@ -46,7 +46,7 @@ def pixelMap(width, height, frame):
 
       mappedFrame[pixelTarget] = frame[i]
 
-      return mappedFrame
+   return mappedFrame
 
 
 # Fill matrix with solid color
