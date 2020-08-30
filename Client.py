@@ -2,7 +2,7 @@ import os
 import pickle
 from socket import *
 
-host = "LEDMatrixPi.local" # set to IP address of target computer
+host = "10.0.5.10" # set to IP address of target computer
 port = 14000
 addr = (host, port)
 
